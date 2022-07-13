@@ -1,0 +1,5 @@
+Game : League of Legend
+Accound Id:10016
+Account Username:testacc1
+Account Password:111222333
+Thank you for choose us!

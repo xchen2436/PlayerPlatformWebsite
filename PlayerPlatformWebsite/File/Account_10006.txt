@@ -1,0 +1,4 @@
+Accound Id:10006
+Account Username:QWEQWE
+Account Password:123
+Thank you for choose us!

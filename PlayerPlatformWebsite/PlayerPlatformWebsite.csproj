@@ -1,0 +1,643 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SSDTUnitTestPath Condition="'$(SSDTUnitTestPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB</SSDTUnitTestPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SSDTPath Condition="'$(SSDTPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\130</SSDTPath>
+  </PropertyGroup>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{66618CF5-3FF2-4967-A009-258D02E4B45A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PlayerPlatformWebsite</RootNamespace>
+    <AssemblyName>PlayerPlatformWebsite</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44317</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MSCaptcha, Version=2.0.1.36094, Culture=neutral, PublicKeyToken=b9ff12f28cdcf412, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Downloads\login and registration\WebApplication4\bin\MSCaptcha.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Stripe.net, Version=39.111.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stripe.net.39.111.0\lib\net461\Stripe.net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CSS\PurchaseStyleSheet.css" />
+    <Content Include="CSS\StoreStyleSheet.css" />
+    <Content Include="CSS\HomeStyleSheet.css" />
+    <Content Include="CSS\PublicChatStyleSheet.css" />
+    <Content Include="CSS\LoginStyleSheet.css" />
+    <Content Include="CSS\FindPasswordStyleSheet.css" />
+    <Content Include="GUI\About.aspx" />
+    <Content Include="GUI\AdmimChangeItemState.aspx" />
+    <Content Include="GUI\Admin.aspx" />
+    <Content Include="GUI\AdminServer.aspx" />
+    <Content Include="GUI\AdminServerChangeStateCOC.aspx" />
+    <Content Include="GUI\AdminServerChangeStateLOL.aspx" />
+    <Content Include="GUI\AdminServerDetail.aspx" />
+    <Content Include="GUI\Buy.aspx" />
+    <Content Include="GUI\BuyCOC.aspx" />
+    <Content Include="GUI\BuyCOCDetail.aspx" />
+    <Content Include="GUI\BuyLOL.aspx" />
+    <Content Include="GUI\BuyLOLDetail.aspx" />
+    <Content Include="GUI\BuySuccessful.aspx" />
+    <Content Include="GUI\ChooseCard.aspx" />
+    <Content Include="GUI\Contact.aspx" />
+    <Content Include="GUI\CustomerServer.aspx" />
+    <Content Include="GUI\FindPasswordSecondPage.aspx" />
+    <Content Include="GUI\HistoryBuy.aspx" />
+    <Content Include="GUI\HistoryDetailCOC.aspx" />
+    <Content Include="GUI\HistoryDetailLOL.aspx" />
+    <Content Include="GUI\HistorySell.aspx" />
+    <Content Include="GUI\HomeAbout.aspx" />
+    <Content Include="GUI\CheckCode.aspx" />
+    <Content Include="GUI\HomeContact.aspx" />
+    <Content Include="GUI\FindPassword.aspx" />
+    <Content Include="GUI\Home.aspx" />
+    <Content Include="GUI\HomePrivacy.aspx" />
+    <Content Include="GUI\HomeService.aspx" />
+    <Content Include="GUI\Login.aspx" />
+    <Content Include="GUI\ManagePayment.aspx" />
+    <Content Include="GUI\Payment.aspx" />
+    <Content Include="GUI\Privacy.aspx" />
+    <Content Include="GUI\Profile.aspx" />
+    <Content Include="GUI\ProfileChangeEmail.aspx" />
+    <Content Include="GUI\ProfileChangeItemInfoCOCApproved.aspx" />
+    <Content Include="GUI\ProfileChangeItemInfoCOCUnapproved.aspx" />
+    <Content Include="GUI\ProfileChangeItemInfoLOLApproved.aspx" />
+    <Content Include="GUI\ProfileChangeItemInfoLOLUnapproved.aspx" />
+    <Content Include="GUI\ProfileChangePassword.aspx" />
+    <Content Include="GUI\ProfileViewSellItem.aspx" />
+    <Content Include="GUI\Purchase.aspx" />
+    <Content Include="GUI\Register.aspx" />
+    <Content Include="GUI\Sell.aspx" />
+    <Content Include="GUI\SellCOC.aspx" />
+    <Content Include="GUI\SellLOL.aspx" />
+    <Content Include="GUI\SellSuccess.aspx" />
+    <Content Include="GUI\Service.aspx" />
+    <Content Include="GUI\Store.aspx" />
+    <Content Include="Image\Coin10%24.jpg" />
+    <Content Include="Image\Coin100%24.jpg" />
+    <Content Include="Image\Coin20%24.jpg" />
+    <Content Include="Image\Coin5%24.jpg" />
+    <Content Include="Image\Coin50%24.jpg" />
+    <Content Include="Image\GameIcon\Clash-of-Clans.jpg" />
+    <Content Include="Image\GameIcon\FIFA-22.jpeg" />
+    <Content Include="Image\GameIcon\Rainbow-Six.jpg" />
+    <Content Include="Image\iconBuy.jpg" />
+    <Content Include="Image\iconPurchase.png" />
+    <Content Include="Image\FindPasswordBackgroudImage.jpg" />
+    <Content Include="Image\HomeBackgroundImage.jpg" />
+    <Content Include="Image\iconProfile.png" />
+    <Content Include="Image\iconSell.jpg" />
+    <Content Include="Image\GameIcon\league-of-legends.jpg" />
+    <Content Include="Image\Item.png" />
+    <Content Include="Image\LoginBackgrondImage.jpg" />
+    <Content Include="Image\PublicChatBackgroudImage.png" />
+    <Content Include="Image\User.jpg" />
+    <Content Include="Image\WebIcon.png" />
+    <Content Include="Image\RegisterBackgroundImage.png" />
+    <Content Include="CSS\RegisterStyleSheet.css" />
+    <Content Include="PublicChat.aspx" />
+    <Content Include="app.config" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\Card.cs" />
+    <Compile Include="BLL\GameCOC.cs" />
+    <Compile Include="BLL\GameLOL.cs" />
+    <Compile Include="BLL\Order.cs" />
+    <Compile Include="BLL\Server.cs" />
+    <Compile Include="BLL\User.cs" />
+    <Compile Include="ChatHub.cs" />
+    <Compile Include="DAL\CardDB.cs" />
+    <Compile Include="DAL\GameCOCDB.cs" />
+    <Compile Include="DAL\GameLOLDB.cs" />
+    <Compile Include="DAL\OrderDB.cs" />
+    <Compile Include="DAL\ServerDB.cs" />
+    <Compile Include="DAL\UserDB.cs" />
+    <Compile Include="DAL\UtilityDB.cs" />
+    <Compile Include="GUI\About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AdmimChangeItemState.aspx.cs">
+      <DependentUpon>AdmimChangeItemState.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\AdmimChangeItemState.aspx.designer.cs">
+      <DependentUpon>AdmimChangeItemState.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AdminServer.aspx.cs">
+      <DependentUpon>AdminServer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\AdminServer.aspx.designer.cs">
+      <DependentUpon>AdminServer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AdminServerChangeStateCOC.aspx.cs">
+      <DependentUpon>AdminServerChangeStateCOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\AdminServerChangeStateCOC.aspx.designer.cs">
+      <DependentUpon>AdminServerChangeStateCOC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AdminServerChangeStateLOL.aspx.cs">
+      <DependentUpon>AdminServerChangeStateLOL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\AdminServerChangeStateLOL.aspx.designer.cs">
+      <DependentUpon>AdminServerChangeStateLOL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AdminServerDetail.aspx.cs">
+      <DependentUpon>AdminServerDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\AdminServerDetail.aspx.designer.cs">
+      <DependentUpon>AdminServerDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Buy.aspx.cs">
+      <DependentUpon>Buy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Buy.aspx.designer.cs">
+      <DependentUpon>Buy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BuyCOC.aspx.cs">
+      <DependentUpon>BuyCOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\BuyCOC.aspx.designer.cs">
+      <DependentUpon>BuyCOC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BuyCOCDetail.aspx.cs">
+      <DependentUpon>BuyCOCDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\BuyCOCDetail.aspx.designer.cs">
+      <DependentUpon>BuyCOCDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BuyLOL.aspx.cs">
+      <DependentUpon>BuyLOL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\BuyLOL.aspx.designer.cs">
+      <DependentUpon>BuyLOL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BuyLOLDetail.aspx.cs">
+      <DependentUpon>BuyLOLDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\BuyLOLDetail.aspx.designer.cs">
+      <DependentUpon>BuyLOLDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BuySuccessful.aspx.cs">
+      <DependentUpon>BuySuccessful.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\BuySuccessful.aspx.designer.cs">
+      <DependentUpon>BuySuccessful.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ChooseCard.aspx.cs">
+      <DependentUpon>ChooseCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\ChooseCard.aspx.designer.cs">
+      <DependentUpon>ChooseCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CustomerServer.aspx.cs">
+      <DependentUpon>CustomerServer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\CustomerServer.aspx.designer.cs">
+      <DependentUpon>CustomerServer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FindPasswordSecondPage.aspx.cs">
+      <DependentUpon>FindPasswordSecondPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\FindPasswordSecondPage.aspx.designer.cs">
+      <DependentUpon>FindPasswordSecondPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HistoryBuy.aspx.cs">
+      <DependentUpon>HistoryBuy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\HistoryBuy.aspx.designer.cs">
+      <DependentUpon>HistoryBuy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HistoryDetailCOC.aspx.cs">
+      <DependentUpon>HistoryDetailCOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\HistoryDetailCOC.aspx.designer.cs">
+      <DependentUpon>HistoryDetailCOC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HistoryDetailLOL.aspx.cs">
+      <DependentUpon>HistoryDetailLOL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\HistoryDetailLOL.aspx.designer.cs">
+      <DependentUpon>HistoryDetailLOL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HistorySell.aspx.cs">
+      <DependentUpon>HistorySell.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\HistorySell.aspx.designer.cs">
+      <DependentUpon>HistorySell.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HomeAbout.aspx.cs">
+      <DependentUpon>HomeAbout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\HomeAbout.aspx.designer.cs">
+      <DependentUpon>HomeAbout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CheckCode.aspx.cs">
+      <DependentUpon>CheckCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\CheckCode.aspx.designer.cs">
+      <DependentUpon>CheckCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HomeContact.aspx.cs">
+      <DependentUpon>HomeContact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\HomeContact.aspx.designer.cs">
+      <DependentUpon>HomeContact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FindPassword.aspx.cs">
+      <DependentUpon>FindPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\FindPassword.aspx.designer.cs">
+      <DependentUpon>FindPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HomePrivacy.aspx.cs">
+      <DependentUpon>HomePrivacy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\HomePrivacy.aspx.designer.cs">
+      <DependentUpon>HomePrivacy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HomeService.aspx.cs">
+      <DependentUpon>HomeService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\HomeService.aspx.designer.cs">
+      <DependentUpon>HomeService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ManagePayment.aspx.cs">
+      <DependentUpon>ManagePayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\ManagePayment.aspx.designer.cs">
+      <DependentUpon>ManagePayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Privacy.aspx.cs">
+      <DependentUpon>Privacy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Privacy.aspx.designer.cs">
+      <DependentUpon>Privacy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ProfileChangeEmail.aspx.cs">
+      <DependentUpon>ProfileChangeEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\ProfileChangeEmail.aspx.designer.cs">
+      <DependentUpon>ProfileChangeEmail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ProfileChangeItemInfoCOCApproved.aspx.cs">
+      <DependentUpon>ProfileChangeItemInfoCOCApproved.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\ProfileChangeItemInfoCOCApproved.aspx.designer.cs">
+      <DependentUpon>ProfileChangeItemInfoCOCApproved.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ProfileChangeItemInfoCOCUnapproved.aspx.cs">
+      <DependentUpon>ProfileChangeItemInfoCOCUnapproved.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\ProfileChangeItemInfoCOCUnapproved.aspx.designer.cs">
+      <DependentUpon>ProfileChangeItemInfoCOCUnapproved.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ProfileChangeItemInfoLOLApproved.aspx.cs">
+      <DependentUpon>ProfileChangeItemInfoLOLApproved.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\ProfileChangeItemInfoLOLApproved.aspx.designer.cs">
+      <DependentUpon>ProfileChangeItemInfoLOLApproved.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ProfileChangeItemInfoLOLUnapproved.aspx.cs">
+      <DependentUpon>ProfileChangeItemInfoLOLUnapproved.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\ProfileChangeItemInfoLOLUnapproved.aspx.designer.cs">
+      <DependentUpon>ProfileChangeItemInfoLOLUnapproved.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ProfileChangePassword.aspx.cs">
+      <DependentUpon>ProfileChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\ProfileChangePassword.aspx.designer.cs">
+      <DependentUpon>ProfileChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ProfileViewSellItem.aspx.cs">
+      <DependentUpon>ProfileViewSellItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\ProfileViewSellItem.aspx.designer.cs">
+      <DependentUpon>ProfileViewSellItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Purchase.aspx.cs">
+      <DependentUpon>Purchase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Purchase.aspx.designer.cs">
+      <DependentUpon>Purchase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Sell.aspx.cs">
+      <DependentUpon>Sell.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Sell.aspx.designer.cs">
+      <DependentUpon>Sell.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SellCOC.aspx.cs">
+      <DependentUpon>SellCOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\SellCOC.aspx.designer.cs">
+      <DependentUpon>SellCOC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SellLOL.aspx.cs">
+      <DependentUpon>SellLOL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\SellLOL.aspx.designer.cs">
+      <DependentUpon>SellLOL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SellSuccess.aspx.cs">
+      <DependentUpon>SellSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\SellSuccess.aspx.designer.cs">
+      <DependentUpon>SellSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Service.aspx.cs">
+      <DependentUpon>Service.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Service.aspx.designer.cs">
+      <DependentUpon>Service.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Store.aspx.cs">
+      <DependentUpon>Store.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUI\Store.aspx.designer.cs">
+      <DependentUpon>Store.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="PublicChat.aspx.cs">
+      <DependentUpon>PublicChat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PublicChat.aspx.designer.cs">
+      <DependentUpon>PublicChat.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="File\" />
+    <Folder Include="Image\UploadImage\CoC\" />
+    <Folder Include="Image\UploadImage\LoL\" />
+  </ItemGroup>
+  <ItemGroup Condition="$(VisualStudioVersion) == '16.0'">
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTPath)\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTesting, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49448</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44317/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <PropertyGroup>
+    <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>
+  </PropertyGroup>
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' == ''" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

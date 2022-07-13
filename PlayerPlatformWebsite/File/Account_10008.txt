@@ -1,0 +1,4 @@
+Accound Id:10008
+Account Username:testacc1
+Account Password:qwe123
+Thank you for choose us!

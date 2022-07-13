@@ -1,0 +1,4 @@
+Accound Id:2006
+Account Email:qwe@gmail.com
+Account Password:qwe123
+Thank you for choose us!

@@ -1,0 +1,4 @@
+Accound Id:10007
+Account Username:999
+Account Password:999
+Thank you for choose us!
