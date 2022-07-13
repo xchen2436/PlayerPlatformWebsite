@@ -74,7 +74,7 @@ namespace PlayerPlatformWebsite.GUI
                 string emailcode = randomGenerator.Next(1001, 9999).ToString();
                 string OldEmail = LabelEmailInfo.Text.ToString();
                 string NewEmail = TextBoxNewEmail.Text.ToString(); //To address    
-                string SystemEmail = "xchen.montreal@outlook.com"; //From address    
+                string SystemEmail = "xxxxxxx.xxxxxxx@outlook.com"; //From address    
                 Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
                 Match match = regex.Match(NewEmail);
                 if (match.Success)
@@ -88,7 +88,7 @@ namespace PlayerPlatformWebsite.GUI
                     message.IsBodyHtml = true;
                     SmtpClient client = new SmtpClient("smtp-mail.outlook.com", 587);
                     System.Net.NetworkCredential basicCredential = new
-                    System.Net.NetworkCredential("xchen.montreal@outlook.com", "chenxiao713");
+                    System.Net.NetworkCredential("xxxxxxx.xxxxxxx@outlook.com", "xxxxxxx");
                     client.EnableSsl = true;
                     client.UseDefaultCredentials = false;
                     client.Credentials = basicCredential;

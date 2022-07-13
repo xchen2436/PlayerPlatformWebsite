@@ -65,7 +65,7 @@ namespace PlayerPlatformWebsite.GUI
             if (reader.Read())
             {
                 string ReplyMessage = TextBoxReply.Text.Replace(Environment.NewLine, "<br/>"); ;
-                string SystemEmail = "xchen.montreal@outlook.com"; //From address    
+                string SystemEmail = "xxxxxxx"; //From address    
                 string SendEmail = reader["Email"].ToString();//To address 
                 MailMessage message = new MailMessage(SystemEmail, SendEmail);
                 string mailbody = "<h3>Hello " + Username  +"</h3>" + "<p>" + ReplyMessage + "</p>"+
@@ -76,7 +76,7 @@ namespace PlayerPlatformWebsite.GUI
                 message.IsBodyHtml = true;
                 SmtpClient client = new SmtpClient("smtp-mail.outlook.com", 587);
                 System.Net.NetworkCredential basicCredential = new
-                System.Net.NetworkCredential("xchen.montreal@outlook.com", "chenxiao713");
+                System.Net.NetworkCredential("xxxxxxx", "xxxxxxx");
                 client.EnableSsl = true;
                 client.UseDefaultCredentials = false;
                 client.Credentials = basicCredential;

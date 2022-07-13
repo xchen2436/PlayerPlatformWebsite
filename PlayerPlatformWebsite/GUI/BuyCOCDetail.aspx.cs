@@ -217,7 +217,7 @@ namespace PlayerPlatformWebsite.GUI
             SqlDataReader reader = cmdSearchPassword.ExecuteReader();
             if (reader.Read())
             {
-                string SystemEmail = "xchen.montreal@outlook.com"; //From address    
+                string SystemEmail = "xxxxxxx"; //From address    
                 string SendEmail = reader["Email"].ToString();//To address 
                 MailMessage message = new MailMessage(SystemEmail, SendEmail);
                 string mailbody = "<h3>Do not Reply</h3>" + "<p>Your item with Id: " + Id + " has been sold.</p>" +
@@ -228,7 +228,7 @@ namespace PlayerPlatformWebsite.GUI
                 message.IsBodyHtml = true;
                 SmtpClient client = new SmtpClient("smtp-mail.outlook.com", 587);
                 System.Net.NetworkCredential basicCredential = new
-                System.Net.NetworkCredential("xchen.montreal@outlook.com", "chenxiao713");
+                System.Net.NetworkCredential("xxxxxxx", "xxxxxxx");
                 client.EnableSsl = true;
                 client.UseDefaultCredentials = false;
                 client.Credentials = basicCredential;
